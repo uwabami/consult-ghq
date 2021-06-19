@@ -3,7 +3,7 @@
 ;; Copyright (C) 2010-2018 Youhei SASAKI <uwabami@gfd-dennou.org>
 
 ;; Author: Youhei SASAKI <uwabami@gfd-dennou.org>
-;; $Lastupdate: 22021-06-08 13:34:40$
+;; $Lastupdate: 22021-06-20 01:25:42$
 ;; Version: 0.0.2
 ;; Package-Requires: ((emacs "27.1") (consult "0.8"))
 ;; Keywords: tools
@@ -73,7 +73,8 @@
       (error "Failed: Can't get ghq's root"))
     (replace-regexp-in-string "\n+$" "/"
                               (buffer-substring-no-properties
-                               (goto-char (point-min))(goto-char (point-max))))))
+                               (goto-char (point-min))
+                               (goto-char (point-max))))))
 
 (defun consult-ghq--list-candidates ()
   (with-temp-buffer
@@ -93,18 +94,19 @@
 
 ;;; autoload
 (defun consult-ghq-open ()
-  "Use `completing-read' to \\[dired] a ghq list"
+  "Use `consult--read' to \\[dired] a ghq list"
   (interactive)
-  (find-file
+  (consult-ghq--open-dired
    (consult--read
     (or (consult-ghq--list-candidates)
         (user-error "No ghq repository"))
-    :prompt "Find recent file: "
+    :prompt "ghq: "
     :sort nil
     :require-match t
     :category 'file
     :state (consult--file-preview)
-    )))
+    )
+   ))
 
 
 (provide 'consult-ghq)
