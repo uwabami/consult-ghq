@@ -3,8 +3,8 @@
 ;; Copyright (C) 2010-2018 Youhei SASAKI <uwabami@gfd-dennou.org>
 
 ;; Author: Youhei SASAKI <uwabami@gfd-dennou.org>
-;; $Lastupdate: 22021-06-20 01:25:42$
-;; Version: 0.0.2
+;; $Lastupdate: 22021-09-08 20:08:37$
+;; Version: 0.0.3
 ;; Package-Requires: ((emacs "27.1") (consult "0.8"))
 ;; Keywords: tools
 ;; URL: https://github.com/uwabami/consult-ghq
@@ -32,8 +32,10 @@
 
 ;;; Code:
 
+(require 'consult)
+
 (defgroup consult-ghq nil
-  "ghq with ido interface"
+  "ghq with conslut interface"
   :prefix "consult-ghq-"
   :group 'consult)
 
